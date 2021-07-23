@@ -1,0 +1,40 @@
+{
+	"name": "isotopekit/auth_api",
+	"description": "Auth API Package",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Vijayant Katyal",
+			"email": "hello@vijayantkatyal.com"
+		}
+	],
+	"repositories": [
+		{
+			"type": "path",
+			"url": "/packages/utility",
+			"options": {
+				"symlink": true
+			}
+		}
+	],
+	"require": {
+		"isotopekit/utility": "@dev"
+	},
+	"autoload": {
+		"psr-4": {
+			"IsotopeKit\\AuthAPI\\": "src/",
+			"IsotopeKit\\AuthAPI\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"IsotopeKit\\AuthAPI\\ServiceProvider"
+			]
+		}
+	},
+	"config": {
+		"sort-packages": true
+	}
+}

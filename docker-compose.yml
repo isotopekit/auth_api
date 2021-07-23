@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  app:
+    container_name: isotopekit_package_auth_api
+    image: php:alpine
+    build: .
+    volumes:
+      - "./:/app"
+      - "./../../packages:/packages"
+    working_dir: /app
+    command: "composer install"

@@ -1,0 +1,57 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "dc3c2ea39df3c3dfb38116e6a9ea435e",
+    "packages": [
+        {
+            "name": "isotopekit/utility",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/packages/utility",
+                "reference": "ce33abd7bbebec9037ab7bb51d1f44a5fafc1b52"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "IsotopeKit\\Utility\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "IsotopeKit\\Utility\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vijayant Katyal",
+                    "email": "hello@vijayantkatyal.com"
+                }
+            ],
+            "description": "Utility Package",
+            "transport-options": {
+                "symlink": true,
+                "relative": false
+            }
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "isotopekit/utility": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}
