@@ -25,24 +25,24 @@ Route::group(
 
 // test
 
-Route::group(
-	[
-		'prefix'		=>	'admin',
-		'middleware'	=>	['admin']
-	],
-	function () {
-		Route::get('/info', [AuthController::class, 'getInfo']);
-		Route::get('/logout', [AuthController::class, 'postLogout']);
-	}
-);
+// Route::group(
+// 	[
+// 		'prefix'		=>	'admin',
+// 		'middleware'	=>	['admin']
+// 	],
+// 	function () {
+// 		Route::get('/info', [AuthController::class, 'getInfo']);
+// 		Route::get('/logout', [AuthController::class, 'postLogout']);
+// 	}
+// );
 
-Route::group(
-	[
-		'prefix'		=>	'user',
-		'middleware'	=>	['user']
-	],
-	function () {
-		Route::get('/info', [AuthController::class, 'getUserInfo']);
-		Route::get('/logout', [AuthController::class, 'postLogout']);
-	}
-);
+// Route::group(
+// 	[
+// 		'prefix'		=>	'user',
+// 		'middleware'	=>	['user']
+// 	],
+// 	function () {
+// 		Route::get('/info', [AuthController::class, 'getUserInfo']);
+// 		Route::get('/logout', [AuthController::class, 'postLogout']);
+// 	}
+// );

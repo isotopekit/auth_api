@@ -29,15 +29,32 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
 		// return $request->all();
+		$login_type = "user";
+		$login_url = "/login";
+
+		if($request->has('login_type'))
+		{
+			$login_type = $request->input('login_type');
+		}
+		
+		if($login_type == "user")
+		{
+			$login_url = "/login";
+		}
+		if($login_type == "admin")
+		{
+			$login_url = "/admin/login";
+		}
+
         try{
             // validate
             $isValid =  Validator::make($request->all(), [
                 'email'         => 'required|string|email|min:5|max:50',
                 'password'      => 'required|string|min:6|max:20'
             ]);
-            
+
             if($isValid->fails()){
-                return redirect('/login')->withErrors($isValid)->withInput();
+                return redirect($login_url)->withErrors($isValid)->withInput();
             }
             else{
                 
@@ -64,14 +81,14 @@ class AuthController extends Controller
                     $messages = [
                         'general'	=>	'invalid username or password'
                     ];
-                    return view('authapi::login')->withErrors($messages);
+					return redirect($login_url)->withErrors($messages)->withInput();
                 }
 
             }
         }
         catch(\Exception $ex)
         {
-            return redirect('/login')->with('status.error', 'Something went wrong, try again later');
+            return redirect($login_url)->with('status.error', 'Something went wrong, try again later');
         }
     }
 
