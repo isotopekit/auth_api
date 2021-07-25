@@ -43,16 +43,36 @@ class CreateAuthTable extends Migration
             $table->id();
             $table->string('name', 20);
             $table->string('price', 5)->nullable();
+			$table->boolean('enabled')->default(true);
+			$table->string('valid_time', 5)->nullable()->default("31");
+
+			// branding
             $table->boolean('remove_branding')->default(false)->nullable();
-            $table->string('team_members', 5)->nullable();
             $table->boolean('custom_branding')->default(false)->nullable();
 
+			// team
+			$table->boolean('enable_team')->default(false)->nullable();
+			$table->string('team_members', 5)->nullable();
+
+			// custom domains
+			$table->boolean('enable_custom_domains')->default(false)->nullable();
+			$table->string('custom_domains', 5)->nullable();
+
+			// agency
+			$table->boolean('enable_agency')->default(false)->nullable();
+			$table->string('agency_members', 5)->nullable();
+
+			// agency team
+			$table->boolean('agency_enable_team')->default(false)->nullable();
+			$table->string('agency_team_members', 5)->nullable();
+
+			// agency custom domains
+			$table->boolean('agency_enable_custom_domains')->default(false)->nullable();
+			$table->string('agency_custom_domains', 5)->nullable();
+
             // add columns based on features here
-
-            $table->string('valid_time', 5)->nullable()->default("31");
-            $table->boolean('enabled')->default(true);
-
-            $table->string('agency_members', 5)->nullable();
+			// user
+			// client
 
             $table->timestamps();
         });
