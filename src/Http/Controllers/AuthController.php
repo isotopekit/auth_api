@@ -94,8 +94,25 @@ class AuthController extends Controller
 
 	public function postLogout(Request $request)
     {
+		$login_type = "user";
+		$login_url = "/login";
+
+		if($request->has('login_type'))
+		{
+			$login_type = $request->input('login_type');
+		}
+		
+		if($login_type == "user")
+		{
+			$login_url = "/login";
+		}
+		if($login_type == "admin")
+		{
+			$login_url = "/admin/login";
+		}
+
         Session::flush();
-        return redirect('/login');
+        return redirect($login_url);
     }
 
 	public function getRegister()
