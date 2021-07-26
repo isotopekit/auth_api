@@ -13,6 +13,7 @@ class CreateAuthTable extends Migration
      */
     public function up()
     {
+		// users
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('first_name', 15);
@@ -32,6 +33,7 @@ class CreateAuthTable extends Migration
             $table->timestamps();
         });
 
+		// user roles
 		Schema::create('user_role', function (Blueprint $table) {
             $table->id();
             $table->string('user_id', 10);
@@ -39,6 +41,7 @@ class CreateAuthTable extends Migration
             $table->timestamps();
         });
 
+		// levels / plans
 		Schema::create('levels', function (Blueprint $table) {
             $table->id();
             $table->string('name', 20);
@@ -77,6 +80,35 @@ class CreateAuthTable extends Migration
             $table->timestamps();
         });
 
+		// agency / whitelabel
+		Schema::create('site_settings', function ($table) {
+            $table->increments('id');
+			$table->string('agency_id', 5)->nullable();
+            $table->string('name', 20);
+            $table->string('language', 5)->default('en');
+            $table->string('theme', 10)->default('blue');
+            $table->string('unique_name', 20)->nullable();
+            $table->string('support_url', 50)->nullable();
+            $table->longText('page_description')->nullable();
+            $table->string('external_url', 50)->nullable();
+			$table->string('support_email', 50)->nullable();
+			$table->boolean('show_training_url')->default(false)->nullable();
+			$table->string('training_url', 50)->nullable();
+
+            $table->string('encryption', 10)->nullable();
+            $table->string('host', 20)->nullable();
+            $table->string('port', 5)->nullable();
+            $table->string('username', 20)->nullable();
+            $table->string('password', 20)->nullable();
+            $table->string('from_address', 50)->nullable();
+            $table->string('from_name', 20)->nullable();
+            
+			$table->string('favicon', 50)->nullable();
+			$table->string('logo', 50)->nullable();
+
+			$table->timestamps();
+        });
+
     }
 
     /**
@@ -89,5 +121,6 @@ class CreateAuthTable extends Migration
         Schema::dropIfExists('users');
 		Schema::dropIfExists('user_role');
 		Schema::dropIfExists('levels');
+		Schema::dropIfExists('site_settings');
     }
 }
