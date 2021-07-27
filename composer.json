@@ -27,6 +27,18 @@
 			"IsotopeKit\\AuthAPI\\Database\\Seeders\\": "database/seeders/"
 		}
 	},
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan vendor:publish --provider='IsotopeKit\\AuthAPI\\ServiceProvider' --tag='config' --force",
+			"php artisan vendor:publish --provider='IsotopeKit\\AuthAPI\\ServiceProvider' --tag='migrations' --force",
+			"php artisan db:seed --class='IsotopeKit\\AuthAPI\\Database\\Seeders\\DatabaseSeeder' --force"
+		],
+		"post-update-cmd": [
+			"php artisan vendor:publish --provider='IsotopeKit\\AuthAPI\\ServiceProvider' --tag='config' --force",
+			"php artisan vendor:publish --provider='IsotopeKit\\AuthAPI\\ServiceProvider' --tag='migrations' --force",
+			"php artisan db:seed --class='IsotopeKit\\AuthAPI\\Database\\Seeders\\DatabaseSeeder' --force"
+		]
+	},
 	"extra": {
 		"laravel": {
 			"providers": [
