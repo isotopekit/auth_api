@@ -9,7 +9,7 @@ class Site extends Model
     protected $table = 'site_settings';
 
     protected $fillable = [
-        'language','theme', 'name', 'logo'
+        'language','theme', 'name', 'logo', 'agency_id'
     ];
 
     public static function settings()
@@ -46,6 +46,8 @@ class Site extends Model
                 return $site;
             }
         }
+
+		
         
         // app
         return Site::first();
