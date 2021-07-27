@@ -38,6 +38,22 @@ class User extends Authenticatable
 		return false;
 	}
 
+	public function isTeamOnly()
+    {
+        $data = User_Role::where('user_id', $this->id)->first();
+
+        if ($data) {
+            // TODO get from levels table
+            $level = config('isotopekit_auth.id_team');
+
+            if (in_array($level, json_decode($data->levels))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 	public function isUser()
 	{
 		$data = User_Role::where('user_id', $this->id)->first();
@@ -45,7 +61,7 @@ class User extends Authenticatable
 		if ($data) {
 
 
-			$t_level = config('isotopekit_auth.id_team');;
+			$t_level = config('isotopekit_auth.id_team');
 
 			if (in_array($t_level, json_decode($data->levels))) {
 				return false;
@@ -128,7 +144,7 @@ class User extends Authenticatable
 				$level_details = Levels::where('id', $user_level_id)->first();
 
 				if ($level_details) {
-					if ($level_details->agency_members > 0) {
+					if ($level_details->enable_agency) {
 						// echo $level_details->id ."--". $this->created_by;
 						// if($level_details->id === $this->created_by)
 						if ($this->created_by != "direct") {
