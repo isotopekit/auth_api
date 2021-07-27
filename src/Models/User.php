@@ -28,7 +28,7 @@ class User extends Authenticatable
 
 		if ($data) {
 			// TODO get from levels table
-			$level = 0;
+			$level = config('isotopekit_auth.id_admin');
 
 			if (in_array($level, json_decode($data->levels))) {
 				return true;
@@ -45,14 +45,14 @@ class User extends Authenticatable
 		if ($data) {
 
 
-			$t_level = 101;
+			$t_level = config('isotopekit_auth.id_team');;
 
 			if (in_array($t_level, json_decode($data->levels))) {
 				return false;
 			}
 
 			// TODO get from levels table
-			$level = 1;
+			$level = config('isotopekit_auth.id_user');;
 
 			if (in_array($level, json_decode($data->levels))) {
 				// check if agency
@@ -100,7 +100,7 @@ class User extends Authenticatable
 
 		if ($data) {
 			// TODO get from levels table
-			$level = 1;
+			$level = config('isotopekit_auth.id_user');;
 
 			if (in_array($level, json_decode($data->levels))) {
 				// check if agency
@@ -120,7 +120,7 @@ class User extends Authenticatable
 		$user_levels = User_Role::where('user_id', $this->id)->first();
 
 		if ($user_levels) {
-			if (array_key_exists(1, json_decode($user_levels->levels))) {
+			if (array_key_exists(config('isotopekit_auth.id_user'), json_decode($user_levels->levels))) {
 				// get user level
 				$user_level_id = json_decode($user_levels->levels)[1];
 

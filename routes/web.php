@@ -5,7 +5,7 @@ use IsotopeKit\AuthAPI\Http\Controllers\AuthController;
 
 Route::group(
 	[
-		'prefix'		=>	config('authapi.route_prefix'),
+		'prefix'		=>	config('isotopekit_auth.route_prefix'),
 		'middleware'	=>	['guest']
 	],
 	function () {

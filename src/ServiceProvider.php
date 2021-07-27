@@ -36,7 +36,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
 			// publish config
 			$this->publishes([
-				__DIR__ . '/../config/config.php' => config_path('authapi.php'),
+				__DIR__ . '/../config/config.php' => config_path('isotopekit_auth.php'),
 			], 'config');
 
 			// publish views
