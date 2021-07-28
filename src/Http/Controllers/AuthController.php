@@ -63,7 +63,7 @@ class AuthController extends Controller
 				
                     if(Auth::user()->isAdmin() === true)
                     {
-                        return redirect()->intended('/admin/');
+                        return redirect()->intended('/admin');
                     }
                     if(Auth::user()->isTeamOnly() === true)
                     {
@@ -74,7 +74,7 @@ class AuthController extends Controller
                         return redirect()->intended('/agency');
                     }
                     else {
-                        return redirect()->intended('/user/dashboard');
+                        return redirect()->intended('/user');
                     }
                 }
                 else{
