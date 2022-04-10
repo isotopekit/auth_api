@@ -34,6 +34,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 				], 'migrations');
 			}
 
+			if (!class_exists('UpdateSiteTable')) {
+				$this->publishes([
+					__DIR__ . '/../database/migrations/update_site_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_update_site_table.php'),
+					// you can add any number of migrations here
+				], 'migrations');
+			}
+
 			// publish config
 			$this->publishes([
 				__DIR__ . '/../config/config.php' => config_path('isotopekit_auth.php'),
