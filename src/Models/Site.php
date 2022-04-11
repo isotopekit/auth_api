@@ -16,7 +16,9 @@ class Site extends Model
     {
         $url = $_SERVER['HTTP_HOST'];
         
-        if(strpos($url, env('APP_URL_DOMAIN')) != false)
+		$APP_URL_DOMAIN = "domain.com";
+        // if(strpos($url, env('APP_URL_DOMAIN')) != false)
+		if(strpos($url, $APP_URL_DOMAIN) != false)
         {
             $parsedUrl = parse_url($url);
             // $host = explode('.', $parsedUrl['host']);
