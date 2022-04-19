@@ -41,6 +41,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 				], 'migrations');
 			}
 
+			if (!class_exists('CreateDomainsTable')) {
+				$this->publishes([
+					__DIR__ . '/../database/migrations/create_domains_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_domains_table.php'),
+					// you can add any number of migrations here
+				], 'migrations');
+			}
+
 			// publish config
 			$this->publishes([
 				__DIR__ . '/../config/config.php' => config_path('isotopekit_auth.php'),
