@@ -20,7 +20,7 @@ class CheckIsAdmin
 			}
 		}
 		
-		return redirect('/admin/login');
+		return redirect('/');
 		
 	}
 }
