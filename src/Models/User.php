@@ -159,4 +159,22 @@ class User extends Authenticatable
 
 		return false;
 	}
+
+	public function levelInfo()
+	{
+		$data = User_Role::where('user_id', $this->id)->first();
+        if($data)
+        {
+            if(array_key_exists(1, json_decode($data->levels)))
+            {
+                $user_level_id = json_decode($data->levels)[1];
+
+				$level_info = Levels::where('id', $user_level_id)->first();
+                if($level_info)
+                {
+					return $level_info;
+				}
+			}
+		}
+	}
 }
