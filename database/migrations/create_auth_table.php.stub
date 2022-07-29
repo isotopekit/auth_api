@@ -106,6 +106,8 @@ class CreateAuthTable extends Migration
 			$table->string('favicon', 50)->nullable();
 			$table->string('logo', 50)->nullable();
 
+			$table->boolean('show_plan_info')->nullable()->default(true);
+
 			$table->timestamps();
         });
 
